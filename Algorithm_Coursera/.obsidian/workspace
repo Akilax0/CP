@@ -1,0 +1,89 @@
+{
+  "main": {
+    "id": "912df1cde3a453e3",
+    "type": "split",
+    "children": [
+      {
+        "id": "0f45f22c3fd5861d",
+        "type": "leaf",
+        "state": {
+          "type": "empty",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6f48fd99b0e3fda8",
+    "type": "split",
+    "children": [
+      {
+        "id": "40f3bdd171b509fc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4f0f03452e29d64a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "639f5387e196da3f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "536c728e8e3d2e61",
+    "type": "split",
+    "children": [
+      {
+        "id": "5d3f1b8d3b17f2dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b953e258f7b40194",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "0f45f22c3fd5861d",
+  "lastOpenFiles": [
+    "Intro.md"
+  ]
+}

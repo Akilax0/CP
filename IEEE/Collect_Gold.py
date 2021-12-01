@@ -2,11 +2,6 @@ def get_gold(k):
 
 
     return k;
-
-
-
-
-
 n,m = map(int,input().split())
 
 gold = {}
@@ -23,7 +18,7 @@ for _ in range(n):
 for _ in range(m):
     x,y,d = map(int,input().split())
 
-    dist[x].append
+    dist[x].append(d)
 
 
 

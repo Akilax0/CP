@@ -86,4 +86,21 @@ Find minimum number of groups such that at most age difference between any two c
 			i = i + 1
 	return R
 
+### Knapsack(W, w1,v1,.......,wn,vn)
+
+	A = [0,0,....0]
+	V = 0
+
+	repeat n times:
+		if W=0:
+			return (V,A)
+		select i with wi > 0 and max vi/wi
+		a = min(wi,W)
+		V = V + a(vi/wi)
+		wi = wi - a
+		A[i] = A[i] + a
+		W = W - a
+	return (V,A)
+
+
 

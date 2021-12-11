@@ -27,8 +27,7 @@ double get_optimal_value(int capacity, vector<int> weights, vector<int> values) 
 	//}
 
 	int i=0;
-	while(capacity>0 && i<n){
-		std::cout<<value<<"\n";
+	while(capacity>0 && i<=n){
 		int ava = std::min(weights[order[i].second],capacity);
 		capacity = capacity - ava;
 		value =  value + ava*order[i].first;

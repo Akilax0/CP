@@ -21,28 +21,38 @@ vector<int> optimal_points(vector<Segment> &segments) {
 	sort(segments.begin(),segments.end(),compare());	
 
 
-	for(auto i: segments){
-		std::cout<<i.start<<" "<<i.end<<"\n";
-	}
+	//for(auto i: segments){
+		//std::cout<<i.start<<" "<<i.end<<"\n";
+	//}
+
 
 	int i=0;
 	int n = segments.size();
-	while(i<=n){
+	while(i<n){
+		//std::cout<<i<<"\n";
 		Segment curr = segments[i];
-
-		while(curr.end>=segments[i].start){
-			
+		int l = curr.start;
+		int r = curr.end;
+		
+		int index = i;
+		while(r>=segments[i].start){
+			if(l<=segments[i].start){
+				l = segments[i].start;	
+			}	
+			if(r>=segments[i].end){
+				r = segments[i].end;
+			}
 			i++;
 		}
-		
-
+		if(index==i)i++;
+		points.push_back(l);
 	}
 
-	//write your code here
-	for (size_t i = 0; i < segments.size(); ++i) {
-		points.push_back(segments[i].start);
-		points.push_back(segments[i].end);
-	}
+	////write your code here
+	//for (size_t i = 0; i < segments.size(); ++i) {
+		//points.push_back(segments[i].start);
+		//points.push_back(segments[i].end);
+	//}
 	return points;
 }
 

@@ -87,7 +87,88 @@ runtime O(n^2)
 runtime theta(n^2)
 
 
+## Master  Theorem
+
+if T(n) = aT(n/b) + O(n^d) for a>0,b>1,d<=0 
+
+		O(n^d)		if d>logb a
+			
+	T(n) =	O(n^dlogn)	if d = logb a
+
+		O(n^(logb a)	if d < logb a
+
+Ex1
 
 
+T(n) = 4T(n/2) + O(n)
+
+a = 4
+b = 2
+d = 1
+
+Since d < logb a
+	O(n^(2))
+
+
+## Sorting
+
+
+### Selection Sort
+
+- find minimum by scanning 
+- swap with frst element
+
+	for i from 1 to n:
+		minIndex = i
+		for j from i+1 to n:
+			if A[j] <A[minIndex]:
+				minIndex = j
+
+		{A[minIndex] = min A[i...n]}
+		swap(A[i],A[minIndex)
+		{A[1...i] is in final position}
+
+runtime O(n^2)
+
+constant extra memory
+
+### Merge Sort
+
+- based on divide and conquer
+- split array into halves.
+- sort recursively
+- merge
+
+	if n==1:
+		return A
+	m = [n/2]
+	B = MergeSort(A[1...m])
+	C = MergeSort(A[m+1...n])
+	A'= Merge(B,C)
+	return A'
+	
+
+Merge(B[1...p], C[1....q])
+
+	{B and C are sorted}
+
+	D = empty array p+q
+
+	while B and C are both non-empty:
+		b = the first element of B
+
+		c = the first element of C
+
+		if b<=c:
+			move b from B to end of D
+		else:
+			move c from C to end of D
+
+	move rest of B and C to end of D
+
+	return D
+
+
+runtime O(nlogn)
 
 

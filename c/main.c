@@ -84,5 +84,18 @@ int main(){
 	
 /* Arrays */
 
+	int  luckyNumbers[] = {1,4,5,7,12,15,62,2};
+	luckyNumbers[1]=8;
+	printf("%d\n",luckyNumbers[1]);
+
+	int unlucky[10];
+	unlucky[0] = 12;
+	
+	//A string is an array of character
+	char st[20]="asdfghjk";
+	printf("%c\n",st[1]);
+	printf("%c\n",st[20]);
+
+
 	return 0;
 }

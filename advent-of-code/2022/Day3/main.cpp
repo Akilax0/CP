@@ -52,72 +52,46 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-int result(char O, char M){
-    if((O =='A' && M == 'X') || (O =='B' && M == 'Y') || (O =='C' && M == 'Z') ){
-        return 3;
+
+
+int calc(string line){
+    int n = line.length()/2;
+
+    char c;
+    for(int i=0;i<n;i++){
+        for(int j=n;j<2*n;j++){
+            if(line[i]==line[j]){
+                c=line[i];
+            }
+        }
     }
 
-    if((O =='C' && M == 'X') || (O =='A' && M == 'Y') || (O =='B' && M == 'Z') ){
-        return 6;
-    }
-
-    return 0;
-}
-
-int choice(char M){
-
-    if(M=='X')return 1;
-    if(M=='Y')return 2;
-    return 3;
-}
-
-char req(char O ,char M ){
-    if(M=='Y'){
-        if(O=='A')return 'X';
-        if(O=='B')return 'Y';
-        if(O=='C') return 'Z';
-    }
-
-    if(M=='X'){
-        if(O=='A')return 'Z';
-        if(O=='B')return 'X';
-        if(O=='C') return 'Y';
-    }
-
-
-    if(M=='Z'){
-        if(O=='A')return 'Y';
-        if(O=='B')return 'Z';
-        if(O=='C') return 'X';
-    }
-    
+    if(c >= 'a' && c<='z')
+        return c-'a'+1;
+    return c-'A'+ 27;
 }
 
 int main()
 {
-    char O,M,C;
+
+//    memset(check, 0, sizeof(check));
+
     string line;
     fast_cin();
     ifstream file;
     file.open("input.txt");
 
-    ll tot=0;
+    int tot=0;
 
     if(file.is_open()){
         while(getline(file,line)){
-            // cout<<line<<endl;
-            O = line[0];
-            M = line[2];
-            // cout<<O<<" "<<M<<endl;
+            cout<<line<<endl;
 
-            C = req(O,M);
-
-            // the output or req will be X,Y & Z
-            tot += result(O,C) + choice(C);
+            tot+= calc(line);
         }
         file.close();
-    } 
+    }
 
-    cout<<tot<<endl;
+    cout<<tot<<endl; 
     return 0;
 }

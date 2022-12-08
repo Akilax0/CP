@@ -52,72 +52,79 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-int result(char O, char M){
-    if((O =='A' && M == 'X') || (O =='B' && M == 'Y') || (O =='C' && M == 'Z') ){
-        return 3;
-    }
 
-    if((O =='C' && M == 'X') || (O =='A' && M == 'Y') || (O =='B' && M == 'Z') ){
-        return 6;
-    }
-
-    return 0;
-}
-
-int choice(char M){
-
-    if(M=='X')return 1;
-    if(M=='Y')return 2;
-    return 3;
-}
-
-char req(char O ,char M ){
-    if(M=='Y'){
-        if(O=='A')return 'X';
-        if(O=='B')return 'Y';
-        if(O=='C') return 'Z';
-    }
-
-    if(M=='X'){
-        if(O=='A')return 'Z';
-        if(O=='B')return 'X';
-        if(O=='C') return 'Y';
-    }
-
-
-    if(M=='Z'){
-        if(O=='A')return 'Y';
-        if(O=='B')return 'Z';
-        if(O=='C') return 'X';
-    }
+int calc2(string line1, string line2, string line3){
     
+    char c;
+    bool f = false;
+    for(int i=0;i<line1.length();i++){
+        for(int j=0;j<line2.length();j++){
+            for(int k=0;k<line3.length();k++){
+                if(line1[i]==line2[j] && line2[j]==line3[k]){
+                    c=line1[i];
+                    f=true;
+                    break;
+                }
+            }
+            if(f)break;
+        }
+        if(f)break;
+    }
+    cout<<c<<endl;
+
+    if(c >= 'a')
+        return c-'a'+1;
+    return c-'A'+ 27;
+}
+
+
+int calc(string line){
+    int n = line.length()/2;
+
+    char c;
+    for(int i=0;i<n;i++){
+        for(int j=n;j<2*n;j++){
+            if(line[i]==line[j]){
+                c=line[i];
+            }
+        }
+    }
+
+    if(c >= 'a')
+        return c-'a'+1;
+    return c-'A'+ 27;
 }
 
 int main()
 {
-    char O,M,C;
+
+//    memset(check, 0, sizeof(check));
+
     string line;
     fast_cin();
     ifstream file;
     file.open("input.txt");
 
-    ll tot=0;
+    vector<string>rucks;
+    int tot=0;
 
     if(file.is_open()){
         while(getline(file,line)){
-            // cout<<line<<endl;
-            O = line[0];
-            M = line[2];
-            // cout<<O<<" "<<M<<endl;
-
-            C = req(O,M);
-
-            // the output or req will be X,Y & Z
-            tot += result(O,C) + choice(C);
+           // cout<<line<<endl;
+            rucks.push_back(line);
         }
         file.close();
-    } 
+    }
 
-    cout<<tot<<endl;
+
+    for(int i=0;i<rucks.size();i=i+3){
+
+        cout<<rucks[i]<<" "<<rucks[i+1]<<" "<<rucks[i+2]<<endl;
+        int t = calc2(rucks[i],rucks[i+1],rucks[i+2]);
+        // cout<<t<<endl;
+        tot +=t;
+    }
+
+    cout<<tot<<endl; 
     return 0;
 }

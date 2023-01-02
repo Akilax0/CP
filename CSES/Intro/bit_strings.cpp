@@ -3,21 +3,26 @@
 #define ll long long
 #define ld long double
 
+#define M 1000000007
 using namespace std;
 
 
-void solve(ld n){
-	long double M = 1000000007;
+ll solve(ll n,ll a){
 
-	cout<<powl(2,n)%M<<endl;
+    if(n==0)
+        return a;
+
+    a = (a * 2)%M;
+    n--;
+    return solve(n,a);
 }
 
 int main(){
 
-	ld n;
+	ll n;
 	cin>>n;
 
-	solve(n);
+	cout<<solve(n,1)<<endl;
 
 	return 0;
 }

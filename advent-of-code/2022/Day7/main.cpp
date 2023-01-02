@@ -72,6 +72,23 @@ map<string,vector<string>> tree;
 map<string,int> s;
 
 void bfs(pair<string,int>ss){
+
+    queue<pair<string,int>> q;
+
+    q.push(ss);
+    
+    while(!q.empty()){
+        pair<string,int> curr = q.front();
+        q.pop();
+
+        for(auto j: tree[curr.first]){
+            if(s.find(j)==s.end()){
+                q.push(make_pair(j,0));
+            }
+        }
+
+    }
+
     if(s.find(ss.first)==s.end()){
         //cout<<ss.first<<" "<<ss.second<<endl; 
         cout<<ss.first<<": ";
@@ -79,6 +96,8 @@ void bfs(pair<string,int>ss){
             cout<<j<<endl; 
             if(s.find(j)==s.end()){
                 bfs(make_pair(j,0));
+            }else{
+                bfs(make_pair(j,s[j]));
             }
             ss.second += s[j];
         }
@@ -101,6 +120,7 @@ int main()
     bool ls=false;
     
     map<string,string> parent;
+    vector<string>dirs;
     string dir;
     if(file.is_open()){
         while(getline(file,line)){
@@ -117,6 +137,7 @@ int main()
                     if(out!=".."){
                         ls = true;
                         dir = out;
+                        dirs.push_back(dir);
                     }else{
                         dir = parent[dir];
                     }
@@ -170,11 +191,13 @@ int main()
 
 
         ll tot=0;
-        for(auto i: tree){
-            if(s[i.first]<100000){
-                tot +=s[i.first];
+        for(auto i: dirs){
+            cout<<i<<" ";
+            if(s[i]<100000){
+                tot +=s[i];
             }
         }
+        cout<<endl;
         cout<<tot<<endl;
         
     }

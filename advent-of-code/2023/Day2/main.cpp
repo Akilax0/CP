@@ -57,98 +57,123 @@ int main()
     ifstream file;
     file.open("input.txt");
 
-    string snum[9] = {"one","two","three","four","five","six","seven","eight","nine"};
-
+ 
     if(file.is_open()){
         ll tot = 0;
-        int ct = 1;
+        int r = 12;
+        int g = 13;
+        int b = 14;
+        int num = 0;
 
+        // for minimum possible 
+        // int rr = 0;
+        // int gg = 0;
+        // int bb = 0;
+       
         while(getline(file,line)){
+            int rr = 0;
+            int gg = 0;
+            int bb = 0;
+            bool f = true;
             // cout<<line<<endl;
             //s.find(words)
-            vector<int> nums;
-            vector<int> rnums;
             
-
             string a = "";
-            cout<<"count:"<<ct<<endl;
+            for(char& c: line){
+
+                
+                if((c-':')==0){
+                    num = stoi(a.substr(5));
+                    cout<<"Game : "<<num<<endl;
+                    a = "";
+                } 
+
+                if((c-';')==0){
+                    string aa = "";
+                    int nn = 0;
+                    for(char& cc:a){
+                        aa += cc;
+
+                        if((cc-'0')<10 && (cc-'0')>=0){
+                            nn = nn*10+(cc-'0');
+                            
+                        }
+                        if(aa.find("red")!=string::npos){
+                            cout<<"red"<<nn<<endl;
+                            
+                                rr = max(nn,rr);
+                            
+                            aa = "";
+                            nn = 0;
+                        }
+                        if(aa.find("blue")!=string::npos){
+                            cout<<"blue"<<nn<<endl;
+                            
+                                bb = max(nn,bb);
+                            
+                            aa = "";
+                            nn = 0;
+                        }
+                        if(aa.find("green")!=string::npos){
+                            cout<<"green"<<nn<<endl;
+                           
+                                gg = max(nn,gg);
+                            
+                            aa = "";
+                            nn = 0;
+                        }
+
+                        
+                    }
+
+                    if (f==false)
+                        break;
+                    a = "";
+                }
+
+                a += c;
+
+                
+            }
+
+             string aa = "";
+             int nn = 0;
+                    for(char& cc:a){
+                        aa += cc;
+                         if((cc-'0')<10 && (cc-'0')>=0){
+                            nn = nn*10+(cc-'0');
+                            
+                        }
+                        if(aa.find("red")!=string::npos){
+                            cout<<"red"<<nn<<endl;
+                           
+                                rr = max(nn,rr);
+                            
+                            aa = "";
+                            nn = 0;
+                        }
+                        if(aa.find("blue")!=string::npos){
+                            cout<<"blue"<<nn<<endl;
+                          
+                                bb = max(nn,bb);
+                            
+                            aa = "";
+                            nn = 0;
+                        }
+                        if(aa.find("green")!=string::npos){
+                            cout<<"green"<<nn<<endl;
+                            gg = max(nn,gg);
+                            
+                            aa = "";
+                            nn=0;
+                        }
+                    }
+
+            cout<<(rr*bb*gg)<<endl;
+            tot = tot + (rr*bb*gg); 
             
-            for (char& c :  line){
-                
-                
-                if ((c-'0') < 10){
-                    nums.push_back(c-'0');
-                    a = "";
-                    // cout<<"cleared"<<endl;
-                }
-                else{
-                    a += c;
-                    
-
-                    for(int i=1;i<=9;i++){
-                        if(a.find(snum[i-1])!= string::npos){
-                            cout<<"word:"<<a<<endl;
-                            a = "";
-                            nums.push_back(i);
-                            break;
-                        }
-                    }
-                }
-
-                  
-            }
-
-                 for(int i=1;i<=9;i++){
-                        if(a.find(snum[i-1])!= string::npos){
-                            cout<<"word:"<<a<<endl;
-                            a = "";
-                            nums.push_back(i);
-                            break;
-                        }
-                    }
-
-            ct++;  
-            // cout << nums[0]*10+nums.back() << endl;
-            a = "";
-            reverse(line.begin(),line.end());
-
-            for (char& c :  line){
-                
-                
-                if ((c-'0') < 10){
-                    rnums.push_back(c-'0');
-                    a = "";
-                    // cout<<"cleared"<<endl;
-                }
-                else{
-                    a = c + a;
-                    
-
-                    for(int i=1;i<=9;i++){
-                        if(a.find(snum[i-1])!= string::npos){
-                            cout<<"word:"<<a<<endl;
-                            a = "";
-                            rnums.push_back(i);
-                            break;
-                        }
-                    }
-                }
-
-                  
-            }
-
-            for(int i=1;i<=9;i++){
-                if(a.find(snum[i-1])!= string::npos){
-                    cout<<"word:"<<a<<endl;
-                    a = "";
-                    rnums.push_back(i);
-                    break;
-                }
-            }
-        
-
-            tot = tot + (nums[0]*10+rnums[0]);
         }
+        
         cout<<tot<<endl;
         file.close();
     } 

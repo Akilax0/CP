@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// total number of wats to place two knights
+// total number of ways to place two knights
 // for one knight n^2
 // for second knight n^2 - 1
 // (n^2)(n^2-1)/2

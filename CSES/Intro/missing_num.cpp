@@ -1,26 +1,15 @@
 #include<bits/stdc++.h>
-
-#define ll long long
-
 using namespace std;
-
-
+typedef long long ll;
 int main(){
-
-	set<ll> s;
-	ll n,a;
-	cin>>n;
-	for(int i=0;i<n;i++){
-		cin>>a;
-		s.push(a);
-	}
-
-	for(int i=1;i<=n;i++){
-		if(arr[i]==0){
-			cout<<i<<endl;
-			break;
-		}
-	}
-
-	return 0;
+    ll n,a;
+    ll m=0;
+    cin>>n;
+    for(int i=0;i<n-1;i++){
+        cin>>a;
+        m+=a;
+    }
+ 
+    cout<<(ll)((n*(n+1))/2LL)-m<<"\n";
+    return 0;
 }

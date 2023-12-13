@@ -4,11 +4,9 @@
 
 using namespace std;
 
-
 int main(){
 
 	int n;
-	ll a,b;
 	cin>>n;
 
 	if(n==1)cout<<"1"<<endl;
@@ -16,7 +14,6 @@ int main(){
 		if(n%2!=0){
 			for(int i=1;i<=n;i=i+2){
 				cout<<i<<" ";			
-
 			}
 			for(int i=2;i<n;i=i+2){
 				cout<<i<<" ";
@@ -24,7 +21,6 @@ int main(){
 		}else{
 			for(int i=2;i<=n;i=i+2){
 				cout<<i<<" ";			
-
 			}
 			for(int i=1;i<n;i=i+2){
 				cout<<i<<" ";

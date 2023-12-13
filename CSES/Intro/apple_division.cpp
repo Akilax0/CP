@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long int
+
 int findminans(int *arr,int currsum,int totalsum,int i){
     if (i==0)
         return abs((totalsum-currsum) - currsum);

@@ -1,5 +1,11 @@
 #include<bits/stdc++.h>
 
+
+// checks  out how many times 10 appear
+// by looking for number of prime factors {2,5}
+// hence divide by 5
+
+
 using namespace std;
 
 int find_trail_zero(int n){
